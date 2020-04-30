@@ -1,0 +1,87 @@
+\ProvidesPackage{rooke}[2016/3/31]
+
+%{{{ General Libraries
+\RequirePackage{etoolbox}      %Nicer if statements
+\RequirePackage{fancyhdr}      %Fancy headers
+% \RequirePackage{enumitem}      %More control over list enviroment
+\RequirePackage{siunitx}       %Format numbers for human consumption
+\RequirePackage{algorithm}     %Algorithm floats
+\RequirePackage[noend]{algpseudocode} %Psuedocode typsetting
+%}}}
+
+%{{{ Math Libraries
+% These make latex do math more good
+\RequirePackage{mathtools} % Loads amsmath and more goodies
+%\RequirePackage{dsfont}    % Gives us blackboard numbers
+\RequirePackage{amssymb}   % Loads math symbols and fonts
+\RequirePackage{amsthm}    % Gives us theorem enviroments
+\RequirePackage{mathrsfs}  % Gives us fonts
+%}}}
+
+%{{{ Misc Libraries
+\RequirePackage{tikz}     %Allows drawing of pictures
+%\RequirePackage{CJKutf8}  %Symbols needed to draw the shrug
+%}}}
+
+%{{{ Course specfific
+% Sub libraries made to house macros for specific courses
+% \RequirePackage{rooke-combinatorics}
+\RequirePackage{rooke-analysis} 
+
+%}}}
+
+
+% Macros not style related and not big enough to earn their own file
+
+%{{{ Algorithm stuff
+\newcommand{\method}[2]{{\scshape #1}{#2}}
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+%}}}
+
+% {{{ Common Symbols
+\newcommand{\M}{\ensuremath{\mathcal{M}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\renewcommand{\phi}{\varphi}
+% }}}
+
+%{{{ Algebra
+  \DeclareMathOperator{\sgn}{sgn}
+%}}}
+
+  \DeclareMathOperator{\im}{Im}
+
+%{{{ Diff Geo
+  %\DeclareMathOperator{\det}{det}
+  \newcommand{\inner}[2]{\ensuremath{\left< #1 \right>_{#2}}}
+  % Guillmen and Pollacks transversal symbol
+  % https://tex.stackexchange.com/questions/134863/command-for-transverse-and-not-pitchfork-as-used-in-guillemin-and-pollack#134869
+  \newcommand{\transv}{\mathrel{\text{\tpitchfork}}}
+  \newcommand{\tpitchfork}{%
+    \vbox{
+      \baselineskip\z@skip
+      \lineskip-.52ex
+      \lineskiplimit\maxdimen
+      \m@th
+      \ialign{##\crcr\hidewidth\smash{$-$}\hidewidth\crcr$\pitchfork$\crcr}
+    }%
+  }
+%}}}
+
+\newcommand{\shrug}[1][]{%
+\begin{tikzpicture}[baseline,x=0.8\ht\strutbox,y=0.8\ht\strutbox,line width=0.125ex,#1]
+\def\arm{(-2.5,0.95) to (-2,0.95) (-1.9,1) to (-1.5,0) (-1.35,0) to (-0.8,0)};
+\draw \arm;
+\draw[xscale=-1] \arm;
+\def\headpart{(0.6,0) arc[start angle=-40, end angle=40,x radius=0.6,y radius=0.8]};
+\draw \headpart;
+\draw[xscale=-1] \headpart;
+\def\eye{(-0.075,0.15) .. controls (0.02,0) .. (0.075,-0.15)};
+\draw[shift={(-0.3,0.8)}] \eye;
+\draw[shift={(0,0.85)}] \eye;
+% draw mouth
+\draw (-0.1,0.2) to [out=15,in=-100] (0.4,0.95); 
+\end{tikzpicture}}
+
+% vim:foldmethod=marker:foldlevel=0

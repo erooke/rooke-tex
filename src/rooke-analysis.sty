@@ -1,0 +1,44 @@
+\ProvidesPackage{rooke-analysis}[2018/06/12]
+
+% Nice upper integrals
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+
+% Nice lower integrals
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+% Allows us to overlay symbols over the center of an integral
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+
+% Nice average integrals
+\def\avint{\Xint-}
+
+\DeclareMathOperator{\Log}{Log}
+
+% Real and imaginary parts
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+% Residue
+\newcommand{\res}{\operatorname{res}}
+
+% I read this as del x
+\newcommand{\del}{\partial}
+
+% Function composition
+\newcommand{\comp}{\circ}
+
+% Norms which scale
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}

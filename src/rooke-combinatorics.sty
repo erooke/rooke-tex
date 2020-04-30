@@ -1,0 +1,73 @@
+\ProvidesPackage{rooke-combinatorics}[2018/06/12]
+
+% For drawing tetrominoes
+\RequirePackage{tikz}
+
+%{{{ Tetrominoes
+% These come up a lot
+\def\Lblock#1#2{
+\begin{scope}[shift={#1}, rotate=#2]
+    \fill (0,1) rectangle (1,2) [fill=lightgray];
+    \fill (0,0) rectangle (3,1) [fill=lightgray];
+    \draw [gray](0,1) -- (1,1);
+    \draw [gray](1,0) -- (1,1);
+    \draw [gray](2,0) -- (2,1);
+    \draw [thick] (0,0) -- (0,2) -- (1,2) -- (1,1) -- (3,1) -- (3,0) -- (0,0);
+    \end{scope}
+}
+
+\def\lblock#1#2{
+\begin{scope}[shift={#1}, rotate=#2]
+    \fill (3,1) rectangle (2,2) [fill=lightgray];
+    \fill (0,0) rectangle (3,1) [fill=lightgray];
+    \draw [gray](2,1) -- (3,1);
+    \draw [gray](1,0) -- (1,1);
+    \draw [gray](2,0) -- (2,1);
+    \draw [thick] (0,0) -- (3,0) -- (3,2) -- (2,2) -- (2,1) -- (0,1) -- (0,0);
+    \end{scope}
+}
+
+\def\Sblock#1#2{
+\begin{scope}[shift={#1},rotate=#2]
+    \fill (0,0) rectangle (2,1)[fill=lightgray];
+    \fill (1,1) rectangle (3,2)[fill=lightgray];
+    \draw [gray] (1,0) -- (1,1) -- (2,1) -- (2,2);
+    \draw [thick] (0,0) -- (2,0) -- (2,1) -- (3,1) -- (3,2) -- (1,2) -- (1,1) -- (0,1) -- (0,0);
+\end{scope}
+}
+
+\def\sblock#1#2{
+\begin{scope}[shift={#1},rotate=#2]
+    \fill (0,1) rectangle (2,2)[fill=lightgray];
+    \fill (1,0) rectangle (3,1)[fill=lightgray];
+    \draw [gray] (2,0) -- (2,1) -- (1,1) -- (1,2);
+    \draw [thick] (1,0) -- (3,0) -- (3,1) -- (2,1) -- (2,2) -- (0,2) -- (0,1) -- (1,1) -- (1,0) ;
+\end{scope}
+}
+
+\def\block#1{
+\begin{scope}[shift={#1}]
+    \fill [lightgray] (0,0) rectangle (2,2);
+    \draw [gray] (1,0) -- (1,2);
+    \draw [gray] (0,1) -- (2,1);
+    \draw [thick] (0,0) rectangle (2,2);
+\end{scope}
+}
+
+\def\Iblock#1{
+\begin{scope}[shift={#1}]
+    \fill[lightgray] (0,0) rectangle (4,1);
+    \draw[gray] (1,0) -- (1,1) -- (2,1) -- (2,0) -- (3,0) -- (3,1);
+    \draw [thick] (0,0) rectangle (4,1);
+\end{scope}
+}
+
+\def\Tblock#1{
+\begin{scope}[shift={#1}]
+    \fill [lightgray] (0,0) rectangle (3,1);
+    \fill [lightgray] (1,1) rectangle (2,2);
+    \draw [gray] (1,0) -- (1,1) -- (2,1) -- (2,0);
+    \draw [thick] (0,0) -- (0,1) -- (1,1) -- (1,2) -- (2,2) -- (2,1) -- (3,1) -- (3,0) -- (0,0);
+\end{scope}
+}
+%}}}
